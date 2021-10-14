@@ -24,24 +24,28 @@ services:
       - wasm
       - --wasm-execution
       - compiled
-      - --pruning
-      - archive
       - --state-cache-size
       - "1"
+      - --rpc-port
+      - ${EC_RPC_PORT}
+      - --rpc-external
+      - --ws-port
+      - ${EC_WS_PORT}
+      - --ws-external
+      - --rpc-cors
+      - all
       - --
-      - --pruning
-      - archive
       - --name
-      - ${NODE_NAME} (Embedded Relay)
+      - "${NODE_NAME} (Embedded Relay)"
     labels:
       - traefik.enable=true
       - traefik.http.routers.moonbeam.service=moonbeam
-      - traefik.http.routers.moobeam.entrypoints=websecure
+      - traefik.http.routers.moonbeam.entrypoints=websecure
       - traefik.http.routers.moonbeam.rule=Host(`${EC_HOST}.${DOMAIN}`)
       - traefik.http.routers.moonbeamlb.service=moonbeam
       - traefik.http.routers.moonbeamlb.entrypoints=websecure
       - traefik.http.routers.moonbeamlb.rule=Host(`${EC_LB}.${DOMAIN}`)
-      - traefik.http.services..moonbeam.loadbalancer.server.port=${EC_RPC_PORT}
+      - traefik.http.services.moonbeam.loadbalancer.server.port=${EC_RPC_PORT}
       - traefik.http.routers.moonbeamws.service=moonbeamws
       - traefik.http.routers.moonbeamws.entrypoints=websecure
       - traefik.http.routers.moonbeamws.rule=Host(`${EC_WS_HOST}.${DOMAIN}`)
