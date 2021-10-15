@@ -1,6 +1,12 @@
 # Harmony mainnet node
-
 version: "3.4"
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 20m
+      max-file: "3"
+
 services:
   moonbeam:
     image: purestake/moonbeam:${DOCKER_TAG}
@@ -12,6 +18,7 @@ services:
     ports:
       - 30333:30333/tcp
       - 30334:30334/tcp
+    <<: *logging
     entrypoint:
       - /moonbeam/moonbeam
       - --base-path
