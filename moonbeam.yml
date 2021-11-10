@@ -10,6 +10,7 @@ x-logging: &logging
 services:
   moonbeam:
     image: purestake/moonbeam:${DOCKER_TAG}
+    restart: unless-stopped
     volumes:
       - moonbeam-data:/data
       - /etc/timezone:/etc/timezone:ro
