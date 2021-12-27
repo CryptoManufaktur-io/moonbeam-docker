@@ -13,12 +13,17 @@ services:
     restart: unless-stopped
     volumes:
       - moonbeam-data:/data
+      - ./runtimes:/runtimes
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     user: moonbeam
     ports:
       - 30333:30333/tcp
       - 30334:30334/tcp
+    ulimits:
+      nofile:
+        soft: "65536"
+        hard: "65536"
     <<: *logging
     entrypoint:
       - /moonbeam/moonbeam
@@ -45,6 +50,8 @@ services:
       - --
       - --name
       - "${NODE_NAME} (Embedded Relay)"
+      - --wasm-runtime-overrides
+      - /runtimes
     labels:
       - traefik.enable=true
       - traefik.http.routers.moonbeam.service=moonbeam
