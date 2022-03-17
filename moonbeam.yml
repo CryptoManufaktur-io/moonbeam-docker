@@ -10,6 +10,11 @@ x-logging: &logging
 services:
   moonbeam:
     image: purestake/moonbeam:${DOCKER_TAG}
+    #build:
+    #  context: ./
+    # dockerfile: Dockerfile
+    # args:
+    #   - DOCKER_TAG=${DOCKER_TAG}
     restart: unless-stopped
     volumes:
       - moonbeam-data:/data
@@ -50,8 +55,8 @@ services:
       - --
       - --name
       - "${NODE_NAME} (Embedded Relay)"
-      - --wasm-runtime-overrides
-      - /runtimes
+      - --public-addr
+      - /ip4/${SERVER_IP}
     labels:
       - traefik.enable=true
       - traefik.http.routers.moonbeam.service=moonbeam
