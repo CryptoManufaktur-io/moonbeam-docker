@@ -43,8 +43,12 @@ services:
       - wasm
       - --wasm-execution
       - compiled
+      - --pruning
+      - archive
       - --state-cache-size
       - "1"
+      - --db-cache
+      - ${DB_CACHE_SIZE}
       - --rpc-port
       - ${EC_RPC_PORT}
       - --rpc-external
@@ -56,6 +60,10 @@ services:
       - --public-addr
       - /ip4/${SERVER_IP}
       - --
+      - --execution
+      - wasm
+      - --pruning
+      - "1000"
       - --name
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
