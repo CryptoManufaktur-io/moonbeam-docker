@@ -10,11 +10,12 @@ x-logging: &logging
 services:
   moonbeam:
     image: purestake/moonbeam:${DOCKER_TAG}
+    #image: moonbeam:local
     #build:
     #  context: ./
-    # dockerfile: Dockerfile
-    # args:
-    #   - DOCKER_TAG=${DOCKER_TAG}
+    #  dockerfile: Dockerfile
+    #  args:
+    #    - DOCKER_TAG=${DOCKER_TAG}
     restart: unless-stopped
     volumes:
       - moonbeam-data:/data
@@ -52,6 +53,8 @@ services:
       - --ws-external
       - --rpc-cors
       - all
+      - --public-addr
+      - /ip4/${SERVER_IP}
       - --
       - --name
       - "${NODE_NAME} (Embedded Relay)"
