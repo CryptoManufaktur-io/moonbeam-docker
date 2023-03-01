@@ -47,9 +47,6 @@ services:
       - archive
       - --db-cache
       - ${DB_CACHE_SIZE}
-      - --rpc-port
-      - ${EC_RPC_PORT}
-      - --rpc-external
       - --ws-port
       - ${EC_WS_PORT}
       - --ws-external
@@ -68,15 +65,14 @@ services:
       - /ip4/${SERVER_IP}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.moonbeam.service=moonbeam
+      - traefik.http.routers.moonbeam.service=moonbeamws
       - traefik.http.routers.moonbeam.entrypoints=websecure
       - traefik.http.routers.moonbeam.rule=Host(`${EC_HOST}.${DOMAIN}`)
       - traefik.http.routers.moonbeam.tls.certresolver=letsencrypt
-      - traefik.http.routers.moonbeamlb.service=moonbeam
+      - traefik.http.routers.moonbeamlb.service=moonbeamws
       - traefik.http.routers.moonbeamlb.entrypoints=websecure
       - traefik.http.routers.moonbeamlb.rule=Host(`${EC_LB}.${DOMAIN}`)
       - traefik.http.routers.moonbeamlb.tls.certresolver=letsencrypt
-      - traefik.http.services.moonbeam.loadbalancer.server.port=${EC_RPC_PORT}
       - traefik.http.routers.moonbeamws.service=moonbeamws
       - traefik.http.routers.moonbeamws.entrypoints=websecure
       - traefik.http.routers.moonbeamws.rule=Host(`${EC_WS_HOST}.${DOMAIN}`)
