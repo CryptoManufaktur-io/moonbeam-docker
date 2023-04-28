@@ -48,7 +48,7 @@ services:
       - --db-cache
       - ${DB_CACHE_SIZE}
       - --ws-port
-      - ${EC_WS_PORT}
+      - ${WS_PORT}
       - --ws-external
       - --rpc-cors
       - all
@@ -67,21 +67,21 @@ services:
       - traefik.enable=true
       - traefik.http.routers.moonbeam.service=moonbeamws
       - traefik.http.routers.moonbeam.entrypoints=websecure
-      - traefik.http.routers.moonbeam.rule=Host(`${EC_HOST}.${DOMAIN}`)
+      - traefik.http.routers.moonbeam.rule=Host(`${RPC_HOST}.${DOMAIN}`)
       - traefik.http.routers.moonbeam.tls.certresolver=letsencrypt
       - traefik.http.routers.moonbeamlb.service=moonbeamws
       - traefik.http.routers.moonbeamlb.entrypoints=websecure
-      - traefik.http.routers.moonbeamlb.rule=Host(`${EC_LB}.${DOMAIN}`)
+      - traefik.http.routers.moonbeamlb.rule=Host(`${RPC_LB}.${DOMAIN}`)
       - traefik.http.routers.moonbeamlb.tls.certresolver=letsencrypt
       - traefik.http.routers.moonbeamws.service=moonbeamws
       - traefik.http.routers.moonbeamws.entrypoints=websecure
-      - traefik.http.routers.moonbeamws.rule=Host(`${EC_WS_HOST}.${DOMAIN}`)
+      - traefik.http.routers.moonbeamws.rule=Host(`${WS_HOST}.${DOMAIN}`)
       - traefik.http.routers.moonbeamws.tls.certresolver=letsencrypt
       - traefik.http.routers.moonbeamwslb.service=moonbeamws
       - traefik.http.routers.moonbeamwslb.entrypoints=websecure
-      - traefik.http.routers.moonbeamwslb.rule=Host(`${EC_WS_LB}.${DOMAIN}`)
+      - traefik.http.routers.moonbeamwslb.rule=Host(`${WS_LB}.${DOMAIN}`)
       - traefik.http.routers.moonbeamwslb.tls.certresolver=letsencrypt
-      - traefik.http.services.moonbeamws.loadbalancer.server.port=${EC_WS_PORT}
+      - traefik.http.services.moonbeamws.loadbalancer.server.port=${WS_PORT}
 
 volumes:
   moonbeam-data:
