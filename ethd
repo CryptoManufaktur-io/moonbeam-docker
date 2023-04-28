@@ -453,15 +453,8 @@ version() {
     value=$(sed -n -e "s/^${var}=\(.*\)/\1/p" ".env" || true)
     # Client versions
     case "${value}" in
-        *opera.yml* )
-            docompose exec opera opera version
-            echo
-            ;;&
-        *grafana.yml* )
-            docompose exec prometheus /bin/prometheus --version
-            echo
-            echo -n "Grafana "
-            docompose exec grafana /run.sh -v
+        *moonbeam.yml* )
+            docompose exec moonbeam /moonbeam/moonbeam --version
             echo
             ;;&
     esac
