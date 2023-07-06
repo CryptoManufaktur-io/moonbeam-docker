@@ -24,8 +24,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     user: moonbeam
     ports:
-      - 30333:30333/tcp
-      - 30334:30334/tcp
+      - ${PARA_P2P_PORT}:${PARA_P2P_PORT}/tcp
+      - ${RELAY_P2P_PORT}:${RELAY_P2P_PORT}/tcp
     ulimits:
       nofile:
         soft: "65536"
@@ -37,7 +37,7 @@ services:
       - /data
       - --database
       - auto
-      - sync
+      - --sync
       - ${SYNC_MODE:-fast}
       - --chain
       - ${CHAIN} 
