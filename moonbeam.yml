@@ -20,7 +20,6 @@ services:
     volumes:
       - moonbeam-data:/data
       - ./runtimes:/runtimes
-      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     user: moonbeam
     ports:
@@ -73,23 +72,23 @@ services:
       - ${RELAY_P2P_PORT}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.moonbeam.service=moonbeamws
-      - traefik.http.routers.moonbeam.entrypoints=websecure
-      - traefik.http.routers.moonbeam.rule=Host(`${RPC_HOST}.${DOMAIN}`)
-      - traefik.http.routers.moonbeam.tls.certresolver=letsencrypt
-      - traefik.http.routers.moonbeamlb.service=moonbeamws
-      - traefik.http.routers.moonbeamlb.entrypoints=websecure
-      - traefik.http.routers.moonbeamlb.rule=Host(`${RPC_LB}.${DOMAIN}`)
-      - traefik.http.routers.moonbeamlb.tls.certresolver=letsencrypt
-      - traefik.http.routers.moonbeamws.service=moonbeamws
-      - traefik.http.routers.moonbeamws.entrypoints=websecure
-      - traefik.http.routers.moonbeamws.rule=Host(`${WS_HOST}.${DOMAIN}`)
-      - traefik.http.routers.moonbeamws.tls.certresolver=letsencrypt
-      - traefik.http.routers.moonbeamwslb.service=moonbeamws
-      - traefik.http.routers.moonbeamwslb.entrypoints=websecure
-      - traefik.http.routers.moonbeamwslb.rule=Host(`${WS_LB}.${DOMAIN}`)
-      - traefik.http.routers.moonbeamwslb.tls.certresolver=letsencrypt
-      - traefik.http.services.moonbeamws.loadbalancer.server.port=${WS_PORT}
+      - traefik.http.routers.${RPC_HOST}.service=${RPC_HOST}
+      - traefik.http.routers.${RPC_HOST}.entrypoints=websecure
+      - traefik.http.routers.${RPC_HOST}.rule=Host(`${RPC_HOST}.${DOMAIN}`)
+      - traefik.http.routers.${RPC_HOST}.tls.certresolver=letsencrypt
+      - traefik.http.routers.${RPC_HOST}lb.service=${RPC_HOST}
+      - traefik.http.routers.${RPC_HOST}lb.entrypoints=websecure
+      - traefik.http.routers.${RPC_HOST}lb.rule=Host(`${RPC_LB}.${DOMAIN}`)
+      - traefik.http.routers.${RPC_HOST}lb.tls.certresolver=letsencrypt
+      - traefik.http.routers.${RPC_HOST}ws.service=${RPC_HOST}
+      - traefik.http.routers.${RPC_HOST}ws.entrypoints=websecure
+      - traefik.http.routers.${RPC_HOST}ws.rule=Host(`${WS_HOST}.${DOMAIN}`)
+      - traefik.http.routers.${RPC_HOST}ws.tls.certresolver=letsencrypt
+      - traefik.http.routers.${RPC_HOST}wslb.service=${RPC_HOST}
+      - traefik.http.routers.${RPC_HOST}wslb.entrypoints=websecure
+      - traefik.http.routers.${RPC_HOST}wslb.rule=Host(`${WS_LB}.${DOMAIN}`)
+      - traefik.http.routers.${RPC_HOST}wslb.tls.certresolver=letsencrypt
+      - traefik.http.services.${RPC_HOST}.loadbalancer.server.port=${WS_PORT}
 
 volumes:
   moonbeam-data:
