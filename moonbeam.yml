@@ -35,6 +35,10 @@ services:
       - /moonbeam/moonbeam
       - --base-path
       - /data
+      - --database
+      - auto
+      - sync
+      - ${SYNC_MODE:-fast}
       - --chain
       - ${CHAIN} 
       - --name
@@ -54,6 +58,8 @@ services:
       - all
       - --public-addr
       - /ip4/${SERVER_IP}
+      - --port
+      - ${PARA_P2P_PORT}
       - --
       - --execution
       - wasm
@@ -63,6 +69,8 @@ services:
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
       - /ip4/${SERVER_IP}
+      - --port
+      - ${RELAY_P2P_PORT}
     labels:
       - traefik.enable=true
       - traefik.http.routers.moonbeam.service=moonbeamws
