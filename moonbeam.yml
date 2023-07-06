@@ -80,14 +80,6 @@ services:
       - traefik.http.routers.${RPC_HOST}lb.entrypoints=websecure
       - traefik.http.routers.${RPC_HOST}lb.rule=Host(`${RPC_LB}.${DOMAIN}`)
       - traefik.http.routers.${RPC_HOST}lb.tls.certresolver=letsencrypt
-      - traefik.http.routers.${RPC_HOST}ws.service=${RPC_HOST}
-      - traefik.http.routers.${RPC_HOST}ws.entrypoints=websecure
-      - traefik.http.routers.${RPC_HOST}ws.rule=Host(`${WS_HOST}.${DOMAIN}`)
-      - traefik.http.routers.${RPC_HOST}ws.tls.certresolver=letsencrypt
-      - traefik.http.routers.${RPC_HOST}wslb.service=${RPC_HOST}
-      - traefik.http.routers.${RPC_HOST}wslb.entrypoints=websecure
-      - traefik.http.routers.${RPC_HOST}wslb.rule=Host(`${WS_LB}.${DOMAIN}`)
-      - traefik.http.routers.${RPC_HOST}wslb.tls.certresolver=letsencrypt
       - traefik.http.services.${RPC_HOST}.loadbalancer.server.port=${WS_PORT}
 
 volumes:
