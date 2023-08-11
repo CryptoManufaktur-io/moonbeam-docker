@@ -2,7 +2,7 @@
 
 docker compose for moonbeam
 
-`./ethd install` can install docker-ce for you
+`./moond install` can install docker-ce for you
 
 To get started, `cp default.env .env`, then `nano .env` and set the `NODE_NAME` and `SERVER_IP`, and adjust `CHAIN` if desired.
 `SYNC_MODE` should usually be `fast` or `warp`.
