@@ -44,7 +44,7 @@ services:
       - wasm
       - --wasm-execution
       - compiled
-      - --pruning
+      - --state-pruning
       - archive
       - --sync
       - full
@@ -62,8 +62,6 @@ services:
       - --
       - --execution
       - wasm
-      #- --pruning
-      #- "1000"
       - --name
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
