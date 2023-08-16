@@ -48,8 +48,6 @@ services:
       - archive
       - --sync
       - full
-      - --db-cache
-      - ${DB_CACHE_SIZE}
       - --ws-port
       - ${WS_PORT}
       - --ws-external
