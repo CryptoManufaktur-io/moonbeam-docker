@@ -36,8 +36,6 @@ services:
       - /data
       - --database
       - auto
-      - --sync
-      - ${SYNC_MODE:-fast}
       - --chain
       - ${CHAIN} 
       - --name
@@ -48,6 +46,8 @@ services:
       - compiled
       - --pruning
       - archive
+      - --sync
+      - full
       - --db-cache
       - ${DB_CACHE_SIZE}
       - --ws-port
