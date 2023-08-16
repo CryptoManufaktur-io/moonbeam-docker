@@ -66,6 +66,8 @@ services:
       - /ip4/${SERVER_IP}
       - --port
       - ${RELAY_P2P_PORT}
+      - --sync
+      - fast
     labels:
       - traefik.enable=true
       - traefik.http.routers.${RPC_HOST}.service=${RPC_HOST}
