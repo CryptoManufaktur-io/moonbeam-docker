@@ -62,8 +62,8 @@ services:
       - --
       - --execution
       - wasm
-      - --pruning
-      - "1000"
+      #- --pruning
+      #- "1000"
       - --name
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
