@@ -46,8 +46,8 @@ services:
       - wasm
       - --wasm-execution
       - compiled
-        #- --pruning
-        #- archive
+      - --pruning
+      - archive
       - --db-cache
       - ${DB_CACHE_SIZE}
       - --ws-port
@@ -62,8 +62,8 @@ services:
       - --
       - --execution
       - wasm
-        #- --pruning
-        #- "1000"
+      - --pruning
+      - "1000"
       - --name
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
