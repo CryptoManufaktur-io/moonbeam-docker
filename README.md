@@ -13,4 +13,4 @@ Running the stack and updates are via docker-compose commands. `./moond up` to s
 
 `./moond update` followed by `./moond up` to update the client.
 
-This is moonbeam-docker v1.1
+This is moonbeam-docker v1.2
