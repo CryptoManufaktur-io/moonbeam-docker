@@ -48,9 +48,9 @@ services:
       - archive
       - --sync
       - full
-      - --ws-port
-      - ${WS_PORT}
-      - --ws-external
+      - --rpc-port
+      - ${RPC_PORT}
+      - --rpc-external
       - --rpc-cors
       - all
       - --public-addr
