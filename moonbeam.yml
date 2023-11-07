@@ -1,5 +1,4 @@
 # Harmony mainnet node
-version: "3.9"
 x-logging: &logging
   logging:
     driver: json-file
@@ -11,6 +10,7 @@ services:
   moonbeam:
     image: purestake/moonbeam:${DOCKER_TAG}
     #image: moonbeam:local
+    #pull_policy: build
     #build:
     #  context: ./
     #  dockerfile: Dockerfile
