@@ -58,8 +58,6 @@ services:
       - --port
       - ${PARA_P2P_PORT}
       - --
-      - --execution
-      - wasm
       - --name
       - "${NODE_NAME} (Embedded Relay)"
       - --public-addr
